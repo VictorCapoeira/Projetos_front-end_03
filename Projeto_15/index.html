@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            min-height: 100vh;
+            margin: 0;
+            font-family: sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: linear-gradient( #5d61f2, #27296b);
+            text-transform: uppercase;
+        }
+        .calc{
+            width: 300px;
+            height: 400px;
+            background-image: linear-gradient(#5981a4, #2b4772);
+            padding: 1em;
+            display: grid;
+            grid-template-columns: repeat(4, 70px);
+            grid-template-rows: repeat(6, 60px);
+            gap: .5em;
+        }
+        .btn{
+            background-image: linear-gradient(#353535, #1b1717);
+            color: white;
+            border: 2px solid black;
+            border-left-color: #8a8a8a;
+            border-top-color: #8a8a8a;
+            font-size: 1em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .display{
+            border: none;
+            grid-column: span 4;
+            justify-content: flex-end;
+            padding-right: .4rem;
+            font-size: 2em;
+        }
+        .span-2-row{
+            grid-row: span 2;
+        }
+        .span-2-collum{
+            grid-column: span 2;
+        }
+    </style>
+</head>
+<body>
+    <div class="calc">
+        <div class="display btn">0</div>
+        <div class="btn btn_btn">ac</div>
+        <div class="btn btn_btn">%</div>
+        <div class="btn btn_btn">x</div>
+        <div class="btn btn_btn">/</div>
+        <div class="btn btn_btn">7</div>
+        <div class="btn btn_btn">8</div>
+        <div class="btn btn_btn">9</div>
+        <div class="btn btn_btn">=</div>
+        <div class="btn btn_btn">4</div>
+        <div class="btn btn_btn">5</div>
+        <div class="btn btn_btn">6</div>
+        <div class="btn btn_btn">-</div>
+        <div class="btn btn_btn">1</div>
+        <div class="btn btn_btn">2</div>
+        <div class="btn btn_btn">3</div>
+        <div class="btn btn_btn span-2-row" >+</div>
+        <div class="btn btn_btn span-2-collum">0</div>
+        <div class="btn btn_btn">,</div>
+
+    </div>
+</body>
+</html>

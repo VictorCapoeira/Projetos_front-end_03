@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@400;600&family=Baskervville:ital@0;1&family=Inter:wght@300;500;700&family=Roboto:wght@300;400;700&family=Viaoda+Libre&display=swap');
+body{
+    font-family: sans-serif;
+    margin: 0;
+    min-height: 100vh;
+    background-color: #8a3030;
+    font-family: 'Baskervville', serif;
+}
+h1{
+    text-align: center;
+    font-size: 50px;
+    font-weight: 300;
+}
+h2{
+    margin: 0;
+}
+.cards{
+    width: 80%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 200px);
+    gap: 20px;
+    box-sizing: border-box;
+}
+.card, .card_2, .card_3{
+    padding: 40px 30px 30px 50px;
+    box-sizing: border-box;
+}
+.card{
+    background-image: linear-gradient(135deg, transparent 25px, white 25px);
+}
+.card_2{
+    background-image: linear-gradient(135deg, transparent 25px, white 25px);
+    position: relative;
+    /* box-shadow: 0px 0px 7px rgb(0 0 0 / .8); */
+    filter: drop-shadow(0px 0px 7px rgb(0 0 0 / .8));
+}
+.card_2::before{
+    content: "";
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    background-image: linear-gradient(135deg, transparent 25px, rgb(160, 160, 160) 25px);
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.card_3{
+    background-image: linear-gradient(135deg, transparent 25px, white 25px);
+    position: relative;
+    /* box-shadow: 0px 0px 7px rgb(0 0 0 / .8); */
+    filter: drop-shadow(0px 0px 7px rgb(0 0 0 / .8));
+}
+.card_3::before{
+    content: "";
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    background-image: linear-gradient(135deg, transparent 25px, rgb(160, 160, 160) 25px);
+    position: absolute;
+    top: 0;
+    left: 0;
+    filter: drop-shadow(0 0 2px black); 
+}
+

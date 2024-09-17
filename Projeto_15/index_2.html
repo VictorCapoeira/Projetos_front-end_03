@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <style>
+        body{
+            min-height: 100vh;
+            margin: 0;
+            background-image: linear-gradient( #5d61f2, #27296b);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-transform: uppercase;
+            font-family: sans-serif;
+        }
+        .Calculadora{
+            background-image: linear-gradient(#5981a4, #2b4772);
+            width: 20em;
+            height: 25em;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(6, 1fr);
+            gap: .5em;
+            padding: 1em;
+        }
+        .display{
+            background-image: linear-gradient(#353535, #1b1717);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid black;
+            border-left-color: #8a8a8a;
+            border-top-color: #8a8a8a;
+        }
+        .display:hover{
+            background-image: linear-gradient(#161616, #0e0c0c);
+        }
+        .display_top{
+            justify-content: flex-end;
+            padding-right: .6rem;
+            font-size: 1.8em;
+            border: none;
+        }
+        .display_top:hover{
+            background-image: linear-gradient(#353535, #1b1717);
+        }
+        .full_grid{
+            grid-column: 1 / -1;
+        }
+        .row_2{
+            grid-row: span 2;
+        }
+        .collum_2{
+            grid-column: span 2;
+        }
+    </style>
+</head>
+<body>
+    <div class="Calculadora">
+        <div class="display full_grid display_top" id="resultado"></div>
+        <div onclick="selecionar_item('ac')" class="display" id="ac">ac</div>
+        <div onclick="selecionar_item('%')" class="display" id="%">%</div>
+        <div onclick="selecionar_item('x')" class="display" id="x">x</div>
+        <div onclick="selecionar_item('/')" class="display" id="/">/</div>
+        <div onclick="selecionar_item('7')" class="display" id="7">7</div>
+        <div onclick="selecionar_item('8')" class="display" id="8">8</div>
+        <div onclick="selecionar_item('9')" class="display" id="9">9</div>
+        <div onclick="selecionar_item('+')" class="display" id="+">+</div>
+        <div onclick="selecionar_item('4')" class="display" id="4">4</div>
+        <div onclick="selecionar_item('5')" class="display" id="5">5</div>
+        <div onclick="selecionar_item('6')" class="display" id="6">6</div>
+        <div onclick="selecionar_item('-')" class="display" id="-">-</div>
+        <div onclick="selecionar_item('1')" class="display" id="1">1</div>
+        <div onclick="selecionar_item('2')" class="display" id="2">2</div>
+        <div onclick="selecionar_item('3')" class="display" id="3">3</div>
+        <div onclick="selecionar_item('=')" class="display row_2" id="=">=</div>
+        <div onclick="selecionar_item('0')" class="display collum_2" id="0">0</div>
+        <div onclick="selecionar_item('.')" class="display" id=".">,</div>
+    </div>
+    <!-- <script>
+        let selecionado = null;
+        let numero_montado = "";
+        let resultado_final = 0;
+        let operador_atual = "";
+        let contandor = 0;
+        document.getElementById("resultado").textContent = ""
+        function selecionar_item(item){
+           switch(item){
+                case "ac":
+                    selecionado = document.getElementById("ac").id;
+                    document.getElementById("resultado").textContent += "AC"
+                    break;
+                case "%":
+                    selecionado = document.getElementById("%").id;
+                    document.getElementById("resultado").textContent += "%";
+                    aplicando_operador(selecionado);
+                    break;
+                case "x":
+                    selecionado = document.getElementById("x").id;
+                    document.getElementById("resultado").textContent += "x";
+                    aplicando_operador(selecionado);
+                    break;
+                case "/":
+                    selecionado = document.getElementById("/").id;
+                    document.getElementById("resultado").textContent += "/";
+                    aplicando_operador(selecionado);
+                    break;
+                case "7":
+                    selecionado = document.getElementById("7").id;
+                    document.getElementById("resultado").textContent += "7"
+                    construindo_numero(selecionado);
+                    break;
+                case "8":
+                    selecionado = document.getElementById("8").id;
+                    document.getElementById("resultado").textContent += "8"
+                    construindo_numero(selecionado);
+                    break;
+                case "9":
+                    selecionado = document.getElementById("9").id;
+                    document.getElementById("resultado").textContent += "9"
+                    construindo_numero(selecionado);
+                    break;
+                case "=":
+                    selecionado = document.getElementById("=").id;
+                    break;
+                case "4":
+                    selecionado = document.getElementById("4").id;
+                    document.getElementById("resultado").textContent += "4"
+                    construindo_numero(selecionado);
+                    break;
+                case "5":
+                    selecionado = document.getElementById("5").id;
+                    document.getElementById("resultado").textContent += "5"
+                    construindo_numero(selecionado);
+                    break;
+                case "6":
+                    selecionado = document.getElementById("6").id;
+                    document.getElementById("resultado").textContent += "6"
+                    construindo_numero(selecionado);
+                    break;
+                case "4":
+                    selecionado = document.getElementById("4").id;
+                    document.getElementById("resultado").textContent += "4"
+                    construindo_numero(selecionado);
+                    break;
+                case "-":
+                    selecionado = document.getElementById("-").id;
+                    document.getElementById("resultado").textContent += "-";
+                    aplicando_operador(selecionado);
+                    break;
+                case "1":
+                    selecionado = document.getElementById("1").id;
+                    document.getElementById("resultado").textContent += "1"
+                    construindo_numero(selecionado);
+                    break;
+                case "2":
+                    selecionado = document.getElementById("2").id;
+                    document.getElementById("resultado").textContent += "2"
+                    construindo_numero(selecionado);
+                    break;
+                case "3":
+                    selecionado = document.getElementById("3").id;
+                    document.getElementById("resultado").textContent += "3"
+                    construindo_numero(selecionado);
+                    break;
+                case "1":
+                    selecionado = document.getElementById("1").id;
+                    document.getElementById("resultado").textContent += "1"
+                    construindo_numero(selecionado);
+                    break;
+                case "+":
+                    selecionado = document.getElementById("+").id;
+                    document.getElementById("resultado").textContent += "+";
+                    aplicando_operador(selecionado);
+                    break;
+                case "0":
+                    selecionado = document.getElementById("0").id;
+                    document.getElementById("resultado").textContent += "0"
+                    construindo_numero(selecionado);
+                    break;
+                case ",":
+                    selecionado = document.getElementById(",").id;
+                    document.getElementById("resultado").textContent += ","
+                    break;
+           }
+           if(resultado_final > 0 && operador_atual != "" && contandor > 1){
+               contandor = 1;
+               switch(operador_atual){
+                    case "x":
+                        resultado_final *= numero_montado;
+                        alert("multi");
+                        break;
+                    case "/":
+                        resultado_final /= numero_montado;
+                        alert("divi");
+                        break;
+                    case "+":
+                        resultado_final += numero_montado;
+                        alert("somou");
+                        break;
+                    case "-":
+                        resultado_final -= numero_montado;
+                        alert("subtra");
+                        break;
+               }
+           }
+        }
+    function construindo_numero(s){
+            numero_montado += s; 
+    }
+    function aplicando_operador(s){
+            let numero_montado_tratado = parseFloat(numero_montado);
+            resultado_final += numero_montado_tratado;
+            numero_montado = "";
+            contandor ++;
+            operador_atual = s;
+    }
+        
+    </script> -->
+    <script>
+        let selecionado = null;
+        let array_de_selecionados = [];
+        let numeros = "";
+        let resultado = 0;
+        function selecionar_item(item){
+            // criando função que irá selecionar o item 
+            switch(item){
+                case "ac": 
+                    selecionado = document.getElementById("ac").id;
+                    break;
+
+                case "%": 
+                    selecionado = document.getElementById("%").id;
+                    break;
+
+                case "x": 
+                    selecionado = document.getElementById("x").id;
+                    break;
+
+                case "/": 
+                    selecionado = document.getElementById("/").id;
+                    break;
+
+                case "7": 
+                    selecionado = document.getElementById("7").id;
+                    break;
+
+                case "8": 
+                    selecionado = document.getElementById("8").id;
+                    break;
+
+                case "9": 
+                    selecionado = document.getElementById("9").id;
+                    break;
+
+                case "+": 
+                    selecionado = document.getElementById("+").id;
+                    break;
+
+                case "4": 
+                    selecionado = document.getElementById("4").id;
+                    break;
+
+                case "5": 
+                    selecionado = document.getElementById("5").id;
+                    break;
+
+                case "6": 
+                    selecionado = document.getElementById("6").id;
+                    break;
+
+                case "-": 
+                    selecionado = document.getElementById("-").id;
+                    break;
+
+                case "1": 
+                    selecionado = document.getElementById("1").id;
+                    break;
+
+                case "2": 
+                    selecionado = document.getElementById("2").id;
+                    break;
+
+                case "3": 
+                    selecionado = document.getElementById("3").id;
+                    break;
+
+                case "=": 
+                    selecionado = document.getElementById("=").id;
+                    break;
+
+                case "0": 
+                    selecionado = document.getElementById("0").id;
+                    break;
+
+                case ".": 
+                    selecionado = document.getElementById(".").id;
+                    break;
+            }
+            construindo_numero(selecionado);
+            construindo_array(selecionado);
+        };
+        function construindo_array(item_selecionado){
+            if(item_selecionado == "+" || item_selecionado == "-" || item_selecionado == "/" || item_selecionado == "x"){
+                array_de_selecionados.push(numeros, item_selecionado);
+                numeros = "";
+            }
+        }
+        function construindo_numero(numero_selecionado){
+            if(numero_selecionado != "+" && numero_selecionado != "-" && numero_selecionado != "/" && numero_selecionado != "x" && numero_selecionado != "=" && numero_selecionado != "ac"){
+                numeros += numero_selecionado;
+            }
+        }
+        function realizando_op(executar){
+            if(executar == "="){
+                for(i = 0; i < array_de_selecionados.length; i++){
+                    if(array_de_selecionados[i]%2 == 0){
+                        
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>
