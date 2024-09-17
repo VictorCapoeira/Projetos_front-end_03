@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animação</title>
+    <style>
+        body{
+            margin-bottom: 100vh;
+        }
+         @keyframes anda{ /* criando animação e definindo o seu nome  */
+             from { /* definindo o começo da animação. pode-se usar palavras magicas como: from == 0% e to == 100% */
+                /* aqui dentro, definimos o comportamento da animação  */
+                transform: translateX(0);
+                background-color: yellow;
+            }
+            50%{
+                background-color: green;
+            }
+            to { /* definindo o estado final da animação  */
+               transform: translateX(300px);
+               background-color: blue;
+            }
+        }
+        @keyframes altura{
+            0%{
+                height: 80px;
+            }
+            100%{
+                height: 120px;
+            }
+        }
+        #anima{
+            outline: 3px solid red;
+            width: 400px; 
+        }
+        #anima div{
+            width: 100px;
+            height: 50px;
+            background-color: #ccc;
+            margin-bottom: 10px;
+        }
+        #anima div:nth-child(1){
+            animation-name: anda;
+            /* definindo o nome da animação que será aplicada no elemento  */
+            animation-duration: 2s;
+            /* definindo a duração da animação  */
+            /* animation-iteration-count: 2;  */
+            /* definindo quantas vezes a animação será aplicada ou "repetida"  */
+            animation-iteration-count: infinite;
+            /* pode-se usar palavras magicas para definir a quantidade de vezes  */
+            animation-timing-function: linear;
+            /* definindo a "velocidade" da animação. usa-se palavras magicas ou pode-se definir valores personalizado usando cubic-bezier */
+            /* animation-direction: normal; */
+            /* indica a direção da animação. usa-se palavras magicas. o valor padrão é normal  */
+            /* animation-direction: reverse;  */
+            /* invertendo o sentindo da animação  */
+            animation-direction: alternate;
+            /* alterana na duas direçãoes  */
+        }
+        #anima div:nth-child(2){
+           
+            /* animation: anda 2s linear 2s 3 alternate;  */
+            /* usando atalho para definir valores de animation. animation: name duration timing-function delay iteration-count direction fill-mode;  */
+            /* animation-delay: 2s;  */
+            /* indicar o delay(tempo de espera) antes da animação disparar  */
+            /* animation-fill-mode: both;  */
+            /* é usado para definir o "estado da animação" sobre o elemento. por exemplo: usando a palavra backwards fazendo com que o elemento inicie com o valor do elemento no %0 da animação. usando a palavra forwards fazemos com  que termine com o valor final da animação.
+            a palavra both pega a propiedade de ambos. Ela começa com o valor de 0% ou from e terminar com o valor de 100% ou to.
+            Na pratica, falamos para o navegador aplicar o valor de 0% da animação no elemento ou o valor de 100% da animção no elemento  */
+            /* animation-play-state: running;  */
+            /* definindo o estado da animação. o valor running é o valor padrão e o valor paused é para pausar a animação  */
+            animation: anda 2s linear 2s 3 alternate both running;
+            /* atalho para todas as propiedades  */
+        }
+        #anima div:nth-child(2):hover{
+            animation-play-state: paused;
+            /* pausando a animação quando o mouse está sobre ela  */
+        }
+        #anima div:nth-child(3){
+           
+           animation: anda 2s linear  3 alternate both,
+           altura 1s linear 1 forwards;
+           /* animando elemento com multiplas animaççoes  */
+           
+       }
+
+
+
+       @keyframes vertical-anda{
+        from{
+            transform: translateY(0px);
+        }
+        to{
+            transform: translateY(180px);
+        }
+       }
+       @keyframes horizontal-anda{
+        from{
+            margin-left: 0;
+        }
+        to{
+            margin-left: 250px;
+        }
+       }
+       #anima_2, #anima_3, #anima_4{
+        margin-top: 50px;
+        outline: 2px solid red;
+        width: 300px;
+        height: 200px;
+       }
+       #anima_2 div, #anima_3 div, #anima_4 div{
+        width: 100px;
+        height: 20px;
+        background-color: #ccc;
+        margin-bottom: 15px;
+       }
+       #anima_2 div:nth-child(1){
+        animation: vertical-anda 2s linear infinite alternate,
+                   horizontal-anda 2s linear infinite alternate;
+       }
+
+       @keyframes altura_2{
+        /* 0%{
+            height: 80px;
+        }
+        20%{
+            height: 120px;
+        }
+        80%{
+            height: 120px;
+        }
+        100%{
+            height: 80px;
+        } */
+        /* isso acima pode ser resumido a:  */
+        0%, 100%{
+            height: 80px;
+        }
+        20%, 80%{
+            height: 120px;
+        }
+       }
+       @keyframes anda_2{ 
+             from { 
+                transform: translateX(0);
+            }
+            to { 
+               transform: translateX(250px);
+            }
+        }
+       #anima_3 div:nth-child(1){
+        animation: altura_2 2s linear 2s infinite alternate,
+                   anda_2 2s linear 2s infinite alternate
+        ;
+        will-change: height;
+        /* ATENÇÂO: a propieade é will-change é usada para preparar o navegador para receber uma animação. na pratica, o navegador vai tentar performar a animação. usa-se esse recurso quando a animação ficar travada ou com perfomace ruim... NO ENTANTO, muito cuidado para não abusar do will-change e acabar tendo o efeito contrario
+        o paramentro para a propieadade é o a proiedade que se estar animando. no caso do exemplo o height  */
+       }
+
+       @keyframes largura {
+        0%{
+            width: 100px;
+        }
+        100%{
+            width: 400px;
+        }
+       }
+       #anima_4{
+        width: 400px;
+       }
+       #anima_4 div:nth-child(1){
+        animation: largura 3s;
+        animation-timing-function: steps(5, Jump-end);
+        /* a função step controla o numero de frames do elemento. o primeiro parametro é o numero de frame e o segundo parametro diz respeito a distribuição dos frames
+        o jump-end, que é o valor padrão, irá pular o ultimo frame*/
+       }
+       #anima_4 div:nth-child(2){
+        animation: largura 3s;
+        animation-timing-function: steps(5, Jump-start);
+        /* o jump-start irá pular o primeiro frame  */
+       }
+       #anima_4 div:nth-child(3){
+        animation: largura 3s;
+        animation-timing-function: steps(5, Jump-none);
+        /* o jump-none não irá pular o primeiro frame  */
+       }
+       #anima_4 div:nth-child(4){
+        animation: largura 3s;
+        animation-timing-function: steps(5, Jump-both);
+        /* o jump-none  irá pular o primeiro frame e o ultimo frame */
+       }
+    </style>
+</head>
+<body>
+    <div id="anima">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+    </div>
+
+    <div id="anima_2">
+        <div>1</div>
+    </div>
+
+    <div id="anima_3">
+        <div>1</div>
+    </div>
+
+    <div id="anima_4">
+        <div>Jump-end</div>
+        <div>Jump-start</div>
+        <div>Jump-none</div>
+        <div>Jump-both</div>
+    </div>
+</body>
+</html>

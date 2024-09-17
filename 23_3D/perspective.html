@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Perspective</title>
+    <style>
+        body{
+            font-family: sans-serif;
+            margin-bottom: 100vh;
+        }
+        .cena{
+            border: 2px solid #ccc;
+            /* criando bordar  */
+            width: 300px; 
+            /* definindo largura  */
+            aspect-ratio: 1; 
+            /* fazendo com que a altura e largura possuam o mesmo valor  */
+            margin: 80px;
+            /* aplicando margin  */
+        }
+        .plano{
+            background-color: red;
+            /* cor de fundo  */
+        }
+        #cena1{
+            perspective: 600px;
+            /* usando a propiedade perspective criamos um "ambiente 3D" dentro de uma area no navegador. basicamente, nesse exemplo, a #cena1 foi transformado em um ambiente em que se é possivel aplicar 3d. */
+            /* a perspective funciona da seguinte forma: quanto menos pixels(valor) Maior será a distorção, pois seria como se o objeto estivesse se aproximando da nossa visão. e quanto Maior o valor, menor a distorção, pois é como se o objeto estivesse se afastadno de nossa visão.
+            não se pode aplicar essa propiedade direto no elemento que queremos aplicar o efeito 3D, tem que ser aplicado no elemento pai dela  */
+        }
+        #cena1 .plano{
+            width: 200px;
+            /* largura do elemento  */
+            margin: 50px;
+            /* margin no elemento  */
+            aspect-ratio: 1;
+            /* fazendo com que altura e largura possuam o mesmo valor  */
+            transform: rotateY(25deg);
+            /* rotacionando o elemento */
+        }
+        
+        #cena2 .plano{
+            width: 200px;
+            /* largura do elemento  */
+            margin: 50px;
+            /* margin no elemento  */
+            aspect-ratio: 1;
+            /* fazendo com que altura e largura possuam o mesmo valor  */
+            transform: perspective(600px) rotateY(25deg);
+            /* rotacionando o elemento e aplicando pespective. Na propiedade tranform pode-se aplicar a função perspective, que tornara o elemento em um elemento 3D. Mas nesse caso, somente o elemento com essa função será aplicado a perspective*/
+        }
+        #cena3, #cena4{
+            display: grid;
+            /* alterando display  */
+            grid-template-columns: repeat(3, 1fr);
+            /* distribuindo elementos  */
+        }
+        #cena3 .plano, #cena4 .plano{
+            margin: 1rem;
+            /* aplicando margin  */
+        }
+        #cena3 {
+            perspective: 600px;
+            /* criando uma area em perspectiva  */
+            perspective-origin: center center; 
+            /* com a propiedade perspective-origin conseguimos ajustar de onde a perspectiva começara. a grosso modo, estamos mudando de onde o ponto do obsevador inicial irá começar. o valor padrão é center(x) e center(y) */
+            /* perspective-origin: right top;  */
+            /* ponto de origen a partir do topo e direita  */
+            /* perspective-origin: right bottom;  */
+            /* ponto de origen a partir do bottom e direita  */
+            /* perspective-origin: left center;  */
+            /* ponto de origen a partir do center e esquerda  */
+            /* PONTO IMPORTANTE A SE NOTAR: perceba-se que todos os elementos estão usando a mesma perspective e perspective-origin como ponto de referencia, e isso faz com que cada elemento tenha uma leve diferença no seu resultado final. isso se dá ao fato do perspective-origin. basicamente, quando mais perto do perspective-origin o elemento estiver, mais distorção ele irá sofrer, e quanto mais longe, menor será o grau de distorçao  */
+        }
+        #cena3 .plano{
+            transform: rotateY(45deg);
+            /* aplicando rotação no y  */
+        }
+        #cena4 .plano{
+            transform: perspective(600px) rotateY(45deg);
+            /* perceba-se que usando a mesma perspective e a mesma rotateY na cena3 e na cena4 o resultado final saiu de forma dirente. isso se deve ao fato de que na cena4 os emelentos se baseiam em sua propia perspective e não na perspective do elemento pai. por isso, todos os emenlemntos possuem o mesmo resultado final, diferente dos elementos na cena3  */
+        }
+        #cena5, #cena6{
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+        }
+        #cena5 .plano:nth-child(1){
+            margin: 1rem;
+            transform: perspective(300px) rotateY(25deg);
+            /* rotacionando o elemento no eixo Y. perceba-se que é como se ele cria-se uma linha na vertical, e rotacione o elemento baseado nela*/
+        }#cena5 .plano:nth-child(2){
+            margin: 1rem;
+            transform: perspective(300px) rotatex(25deg);
+            /* rotacionando o elemento no eixo x. perceba-se que é como se ele cria-se uma linha na horizontal, e rotacione o elemento baseado nela*/
+        }
+        #cena6 .plano:nth-child(1){
+            margin: 1rem;
+            transform: perspective(300px) rotateY(45deg);
+            /* rotacionando o elemento no eixo Y. perceba-se que é como se ele cria-se uma linha na vertical, e rotacione o elemento baseado nela*/
+        }#cena6 .plano:nth-child(2){
+            margin: 1rem;
+            transform: perspective(300px) rotatex(50deg);
+            /* rotacionando o elemento no eixo x. perceba-se que é como se ele cria-se uma linha na horizontal, e rotacione o elemento baseado nela*/
+            /* quando maior o valor no eixo X, maior será o grau de distorção e quanto menor o valor, menor será o grau de distorção  */
+        }
+        #cena7{
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+        }
+        #cena7 .plano{
+            margin: 1rem;
+            transform: perspective(600px) rotatex(320deg);
+            backface-visibility: hidden;
+            /* a propiedade backface no valor visibility, que é o valor padrão, permite que o verso do objeto seja visivel. no valor hidden, ela esconde o verso do objeto  */
+            /* basicamente, quando na rotação de x, a parte de trás do objeto for trazida para fremte, conseguimos influenciar se ela será mostrada ou não  */
+        }
+    </style>
+</head>
+<body>
+    <div class="cena" id="cena1">
+        <div class="plano">Plano</div>
+    </div>
+    <div class="cena" id="cena2">
+        <div class="plano">Plano</div>
+    </div>
+    <div class="cena" id="cena3">
+        <div class="plano">Plano</div>
+        <div class="plano">Plano</div>
+        <div class="plano">Plano</div>
+        <div class="plano">Plano</div>
+        <div class="plano">Plano</div>
+        <div class="plano">Plano</div>
+        <div class="plano">Plano</div>
+        <div class="plano">Plano</div>
+        <div class="plano">Plano</div>
+    </div>
+    <div class="cena" id="cena4">
+        <div class="plano">Plano</div>
+        <div class="plano">Plano</div>
+        <div class="plano">Plano</div>
+        <div class="plano">Plano</div>
+        <div class="plano">Plano</div>
+        <div class="plano">Plano</div>
+        <div class="plano">Plano</div>
+        <div class="plano">Plano</div>
+        <div class="plano">Plano</div>
+    </div>
+    <div class="cena" id="cena5">
+        <div class="plano">Plano</div>
+        <div class="plano">Plano</div>
+    </div>
+    <div class="cena" id="cena6">
+        <div class="plano">Plano</div>
+        <div class="plano">Plano</div>
+    </div>
+    <div class="cena" id="cena7">
+        <div class="plano">Plano</div>
+        <div class="plano">Plano</div>
+        <div class="plano">Plano</div>
+        <div class="plano">Plano</div>
+        <div class="plano">Plano</div>
+        <div class="plano">Plano</div>
+        <div class="plano">Plano</div>
+        <div class="plano">Plano</div>
+        <div class="plano">Plano</div>
+    </div>
+</body>
+</html>

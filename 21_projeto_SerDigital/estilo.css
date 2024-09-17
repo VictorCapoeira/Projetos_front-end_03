@@ -1,0 +1,464 @@
+:root {
+    /* Definindo variavies  */
+    --dark: #272D38;
+    /* ajustando cor escura  */
+    --light: #FFF;
+    /* ajustando cor clara  */
+    --primary-color: #8EADD5;
+    /* definindo cor primaria  */
+    --primary-color-dark: #3f3f3f;
+    /* definindo cor secundaria  */
+    --gray: #F6F6F6;
+    /* ajustando cinza  */
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    /* definindo a fonte  */
+    color: var(--dark); 
+    /* definindo cor padrão dos textos e elementos */
+    text-align: center;
+    /* alinhado no centro os textos e elementos  */
+    margin: 0;
+    /* zerando margins  */
+    background-image: 
+        radial-gradient(circle at top left, rgb(142 173 213 / .3), transparent 400px),
+        /* criando cor de fundo.  */
+        radial-gradient(circle at right center, rgb(142 173 213 / .3), transparent 400px)
+    ;
+}
+
+.content-wrapper-center {
+    padding: 3rem 2rem 1rem;
+    /* aplicando espaço interno  */
+    max-width: 67.25em;
+    /* definindo largura  */
+    margin: auto;
+    /* centrlizando  */
+}
+.imagem{
+    text-align: center;
+}
+.header-menu {
+    list-style-type: none; 
+    /* retirando bullet  */
+    padding: 0; 
+    /* zerando espaço interno  */
+    text-align: right; 
+    /* alinhado texto na direita  */
+}
+
+.header-menu a {
+    display: block;
+    /* alterando tipo de display  */
+    padding: 1.75em 0; 
+    /* aplicando espaço interno  */
+}
+.header-menu li{
+    padding: .25em 0;
+}
+
+a {
+    color: inherit;
+    /* fazendo com que todos os links herdem a cor do seu elemento pai  */
+}
+
+nav a {
+    text-decoration: none; 
+    /* retirando todo os sublinados das tags a que são herdam da tag nav  */
+}
+
+h1 {
+    font-size: 2.5rem; 
+    /* ajustando tamanho da fonte  */
+}
+
+h2 {
+    font-size: 2rem; 
+    /* ajustando tamanho da fonte  */
+}
+.hero_title{
+    margin-top: 0;
+}
+.header {
+    text-align: left; 
+    /* alinahdo texto na esquerda  */
+}
+
+.btn {
+    display: inline-block; 
+    /* alterando tipo de display  */
+    text-decoration: none;
+    /* retirando sublinhado  */
+    padding: 1em; 
+    /* definindo espaço interno  */
+    background-color: var(--primary-color);
+    /* cor de fundo do elemento  */
+    border-radius: 5px;
+    /* arrendodando bordas  */
+    color: var(--light);
+    /* cor da fonte  */
+}
+
+.btn:hover,
+.btn:focus {
+    background-color: var(--primary-color-dark);
+    /* alterando cor de fundo  */
+}
+
+img {
+    max-width: 100%; 
+    /* fazendo com que a imagen ajuste seu tamanho com o valor do seu elemento pai  */
+}
+
+.brands{
+    text-align: center;
+}
+.brands h2 {
+    font-size: 1rem; 
+    /* ajustando tamanho da fonte  */
+    font-weight: lighter;
+    /* ajustando peso da fonte  */
+    color: #667085;
+    /* ajustando cor da fonte  */
+}
+
+.brands ul {
+    list-style-type: none;
+    /* retirando bulltes  */
+    padding: 0;
+    /* zerando espaço interno  */
+    background-color: var(--gray);
+    /* cor de fundo do elemento  */
+    border-radius: 5px;
+    /* arrendodando bordas  */
+    padding: 1em; 
+    /* espaço interno do elemento  */
+}
+
+.hide {
+    /* ESCONDENDO ELEMENTO DE FORMA VISUAL  */
+    position: absolute;
+    /* alterando position  */
+    clip: rect(1px, 1px, 1px, 1px);
+    /* valores para top, right, left e bottom todos em 1px para esconder o elemento  */
+    padding: 0;
+    /* zero de espaço interno  */
+    border: 0;
+    /* zero de bordas  */
+    height: 1px;
+    /* altura de 1px  */
+    width: 1px;
+    /* largura de 1px  */
+    overflow: hidden;
+    /* escodendo as rebarbas que saem para fora do elemento  */
+}
+
+.testemunho {
+    background-color: var(--gray);
+    /* cor de fundo  */
+    border-radius: 5px;
+    /* arrendodando bordas  */
+    padding: 1rem; 
+    /* espaço interno  */
+    container: testemunhoCard / inline-size;
+}
+.testemunho_thumb{
+    width: 8.125rem;
+    height: 8.125rem;
+}
+.contato {
+    background-color: var(--gray);
+    /* cor de fundo  */
+    border-radius: 5px;
+    /* arrendondado bordas  */
+    padding: 1rem;
+    /* espaço interno  */
+    margin-top: 4rem;
+    /* aplicando margin  */
+}
+
+.contato_image {
+    display: none;
+    /* ocultando display ou desabilitando  */
+}
+
+.footer {
+    background-color: var(--gray); 
+    /* cor de fundo  */
+   
+}
+
+.footer ul {
+    list-style-type: none; 
+    /* retirando bullets  */
+    padding: 0;
+    /* zerando espaço interno  */
+}
+
+.footer a {
+    text-decoration: none; 
+    /* retirando sublinhado  */
+}
+
+.logo {
+    text-transform: uppercase; 
+    /* transformando em maisculo  */
+    text-decoration: none;
+    /* retirando sublinhado  */
+    font-weight: bold;
+    /* ajustando peso da fonte  */
+    font-size: 1.2rem;
+    /* ajustando tamanho da fonte  */
+}
+
+.copyright {
+    white-space: nowrap;
+    /* A propriedade CSS white-space é usada para controlar como o espaço em branco dentro de um elemento HTML, como espaços em branco, tabulações e quebras de linha, é tratado e exibido. Ela afeta como o texto é formatado e quebras de linha são tratadas. */
+    /* impendindo quebra de linha  */
+}
+
+.hero,
+.brands,
+.branding,
+.testemunhos,
+.contato {
+    margin-top: 6rem;
+    /* ajustando margin top  */
+    margin-bottom: 6rem;
+    /* ajustando margin bottom  */
+}
+
+
+
+
+
+
+.brands ul{
+    display: flex; 
+    /* alterando display  */
+    gap: 1rem;
+    /* espaço entre cada elemento  */
+    justify-content: space-around;
+    /* distribuindo flex items  */
+}
+
+.row{
+    display: grid;
+    /* alterando display  */
+    grid-template-columns: repeat(12, 1fr);
+    /* definindo numero de colunas  */
+    gap: .5rem;
+    /* aplicando espaço entre cada grid item  */
+    grid-auto-flow: dense;
+    /* auterando a forma que o grid "encaixa" os item. com a propiedade dense fazemos que com que os espaços em brancos seja preenchidos. na pratica, isso irá resolver o problema da .row > .md-1-6{
+        grid-column: 1 / 7;
+    }
+    .row > .md-7-12{
+        grid-column: 7 / 13;
+    } 
+    que acabou gerando um grande espaço em branco e quebrou a linha entre os dois
+    */
+}
+ .row.testemunhos_wrapper{ /*esse seletor quer dizer: selecione o row que tem a classe testemunho-wapprer */
+    row-gap: 3em;
+    /* aplicando gap somente na vertical  */
+}
+.row.contato{
+    padding-top: 4em;
+    padding-bottom: 4em;
+}
+.contato_title{
+    margin-top: 0;
+}
+.row > .sm-12{
+    grid-column: 1 / -1;
+}
+
+.icons li{
+    display: inline-block;
+    font-size: 2em;
+}
+.icons li:not(li:nth-child(1)){
+    margin-left: 1em;
+}
+
+@media screen and (min-width: 46.25em){
+    body{
+        text-align: left;
+    }
+    h1 {
+        font-size:3.625rem; 
+        /* ajustando tamanho da fonte  */
+    }
+    
+    h2 {
+        font-size: 2.875rem; 
+        /* ajustando tamanho da fonte  */
+    }
+    .header{
+        align-items: center;
+    }
+    .menu-btn, .menu-icon{
+        display: none;
+    }
+    .header-menu{
+        display: block;
+    }
+    .header-menu li{
+        display: inline-block;
+        margin-left: 1.7rem;
+    }
+    
+    .contato_image{
+        display: block;
+        text-align: center;
+    }
+    .row{
+        gap: 1em;
+    }
+    .row > .md-3{
+        grid-column: span 3;
+    }
+    .row > .md-4{
+        grid-column: span 4;
+    }
+    .row > .md-6{
+        grid-column: span 6;
+    }
+    .row > .md-9{
+        grid-column: span 9;
+    }
+    .row > .md-1-6{
+        grid-column: 1 / 7;
+    }
+    .row > .md-7-12{
+        grid-column: 7 / 13;
+    }
+}
+
+@media screen and (min-width: 90em){
+    .hero_title{
+        margin-bottom: 2.50em;
+    }
+    .row{
+        gap: 3em;
+    }
+   
+    .row > .lg-3{
+        grid-column: span 3;
+    }
+    .row > .lg-4{
+        grid-column: span 4;
+    }
+    .row > .lg-5{
+        grid-column: span 5;
+    }
+    .row > .lg-6{
+        grid-column: span 6;
+    }
+    .row > .lg-7{
+        grid-column: span 7;
+    }
+    .row > .lg-1-5{
+        grid-column: 1 / 6;
+    }
+    .row .lg-1-7{
+        grid-column: 1 / 8;
+    }
+    .row > .lg-8-12{
+        grid-column: 8 / 13;
+    }
+}
+
+.testemunho_card{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    gap: 1em;
+}
+
+@container testemunhoCard (min-width: 42.187em){
+    .testemunho_card{
+        flex-direction: row;
+        text-align: left;
+    }
+}
+
+.menu-icon{
+    position: relative; 
+    cursor: pointer;
+    height: 24px;
+}
+.nav-icon{
+    background-color: #333;
+    display: inline-block;
+    width: 24px;
+    height: 2px;
+    position: relative; 
+}
+.nav-icon::before, .nav-icon::after{
+    content: "";
+    background-color: #333;
+    display: inline-block;
+    width: 24px;
+    height: 2px;
+    position: absolute; 
+    transition: transform .2s;
+}
+.nav-icon::before{
+    transform: translateY(8px);
+}
+.nav-icon::after{
+    transform: translateY(-8px);
+}
+
+.menu-btn:checked+.menu-icon .nav-icon::before{
+    transform: rotate(-45deg);
+}
+.menu-btn:checked+.menu-icon .nav-icon::after{
+    transform: rotate(45deg);
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+}
+.header nav{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.header-menu{
+    position: absolute; 
+    left: 0;
+    right: 0;
+    top: 100px; 
+    background-color: white;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height .3s;
+    padding-right: 1em;
+    padding-left: 1em;
+}
+.menu-btn:checked ~ .header-menu{
+    max-height: 100vh;
+}
+.menu-btn:checked+.menu-icon .nav-icon{
+    background-color: transparent;
+}
+.header-menu:focus-within{
+    max-height: 100vh;
+}
+@media screen and (min-width: 46.25em){
+    .header-menu{
+        position: static; 
+        background-color: initial;
+        max-height: initial;
+    }
+}
+.menu-btn:focus-visible+.menu-icon{
+    outline: 2px solid black;
+    outline-offset: 3px;
+}
+

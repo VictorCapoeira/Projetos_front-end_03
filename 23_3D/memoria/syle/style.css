@@ -1,0 +1,68 @@
+body{
+    font-family: "Roboto", sans-serif;
+    background-image: radial-gradient( at center center,  blue 300px, purple);
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+main{
+    background-color: white;
+    box-shadow: 3px 3px 0 rgb(0 0 0 / .5); 
+}
+header h1{
+    text-align: center;
+    font-weight: 300;
+    font-size: 2.5rem; 
+}
+label{
+    perspective: 350px;
+}
+.img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.img img{
+    width: 100%;
+    height: 100%;
+}
+
+.label_content{
+    transform-style: preserve-3d;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.carta_marcada{
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+}
+.label_content{
+    transform: rotateY(0);
+    transition: .5s transform;
+}
+.carta_marcada:checked +  .label_content{
+    transform: rotateY(180deg);
+}
+.img_front{
+    transform: rotateY(180deg);
+    backface-visibility: hidden; 
+}
+.card{
+    width: 200px;
+    height: 150px;
+    border: 4px solid rgb(223, 94, 35);
+    border-radius: 5px;
+}
+
+.cards{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    padding: 2rem;
+}

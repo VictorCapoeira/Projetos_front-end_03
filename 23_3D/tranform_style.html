@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D preserve 3D</title>
+    <style>
+        body{
+            margin-bottom: 100vh;
+        }
+        .cena{
+            border: 2px solid #ccc;
+            width: 300px;
+            aspect-ratio: 1;
+            margin: 80px;
+        }
+        .plano{
+            background-color: rgb(0 0 0 / .3);
+            width: 200px;
+            aspect-ratio: 1;
+        }
+        #cena1{
+            perspective: 500px;
+            
+        }
+        .cena1a{
+            transform: rotateY(45deg);
+            transform-style: preserve-3d; 
+            /* A propriedade CSS transform-style é usada para controlar como os elementos filhos de um elemento com transformações 3D são renderizados em relação ao plano 3D do elemento pai. */
+            /* Quando você aplica transform-style: preserve-3d; a um elemento, ele permite que os elementos filhos desse elemento mantenham suas transformações 3D e sejam renderizados no espaço 3D em relação ao elemento pai. */
+            /* A grosso modo, é como se o elemento tivesse a mesma pespectiva do elemento pai, e não uma perspective baseado na do elemento pai */
+        }
+        .cena1b{
+            transform: rotatex(40deg);
+            
+        }
+
+        #cena2{
+            perspective: 400px;
+        }
+        @keyframes rotaciona_y {
+            from{
+                transform: rotateY(0deg);
+            }
+            to{
+                transform: rotateY(360deg);
+            }
+        }
+        .cena2a{
+            animation: rotaciona_y 5s infinite alternate;
+            transform-style: preserve-3d;
+        }
+        @keyframes rotaciona_x {
+            from{
+                transform: rotatex(0deg);
+            }
+            to{
+                transform: rotatex(360deg);
+            }
+        }
+        .cena2b{
+            animation: rotaciona_x 10s infinite alternate;
+        }
+        #cena3{
+            perspective: 500px;
+        }
+        .cena3a{
+            /* transform: rotateY(45deg) translateX(200px); */
+            /* vai ter um resultado diferente de  */
+            transform: translateX(200px) rotateY(45deg) ;
+            /* isso por que a ordem importa no resultado final. na primeira linha, estamos primeiro rotacioando e depois aplicando o tranlate. sendo que na segunda é o contrario */
+            transform-style: preserve-3d;
+        }
+        .cena3b{
+            transform: rotateX(35deg) translateZ(-100px);
+            /* translateZ: Essa propriedade realiza uma translação do elemento ao longo do eixo de profundidade (Z) em um espaço 3D. Ela permite mover um elemento para frente ou para trás na direção perpendicular à tela. */
+        }
+        #cena4{
+            perspective: 400px;
+        }
+        .cena4a{
+            transform: translate(50px, 50px) rotateY(-40deg) ;
+            transform-style: preserve-3d;
+        }
+        .cena4b{
+            transform: translateX(160px) rotateY(65deg) rotateX(10deg) scale(0.79);
+            transform-style: preserve-3d;
+        }
+        .cena4c{
+            transform:  rotateX(-120deg);
+        }
+    </style>
+</head>
+<body>
+    <div id="cena1" class="cena">
+        <div class="cena1a plano">
+            <div class="cena1b plano">Cena 1B</div>
+        </div>
+    </div>
+    <div id="cena2" class="cena">
+        <div class="cena2a plano">
+            <div class="cena2b plano">Cena 2B</div>
+        </div>
+    </div>
+    <div id="cena3" class="cena">
+        <div class="cena3a plano">
+            <div class="cena3b plano">Cena 3B</div>
+        </div>
+    </div>
+    <div id="cena4" class="cena">
+        <div class="cena4a plano">
+            <div class="cena4b plano">
+                <div class="cena4c plano">Cena 4C</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .div_1{
+            margin:250px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            border: 1px solid red;
+            background-color: #ccc;
+            height: 400px;
+            width: 400px;
+            /* perspective: 500px;  */
+            gap: 50px;
+        }
+        .div_2{
+
+            background-color: #888888;
+            transform: perspective(500px) rotateY(50deg); 
+        }
+    </style>
+</head>
+<body>
+    <div class="div_1">
+        <div class="div_2"></div>
+        <div class="div_2"></div>
+        <div class="div_2"></div>
+    </div>
+</body>
+</html>

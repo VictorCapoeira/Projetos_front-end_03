@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card 3D</title>
+    <style>
+        body{
+            font-family: sans-serif;
+            /* definindo a fonte  */
+        }
+        .cena{
+            border: 2px solid #ccc;
+            /* aplicando borda  */
+            width: 300px;
+            /* definindo largura */
+            height: 400px;
+            /* definindo altura */
+            margin: 60px;
+            /* aplicando margin  */
+            perspective: 600px;
+            /* aplicando perpesctiva para criar um ambiente 3D  */
+        }
+        .card{
+            width: 100%;
+            /* forçando o elemento a ocupar 100 da largura disponivel do elemento pai  */
+            height: 100%;
+            /* forçando o elemento a ocupar 100 da altura disponivel do elemento pai  */
+            transform-style: preserve-3d;
+            /* fazendo com que os elementos filhos comparatilhem das mesma perpectiva que o elemento pai  */
+            transition: 2s transform;
+            /* animando transição  */
+            position: relative;
+            /* definindo position  */
+            
+            transform-origin: right center;
+            /* alterando a origem da tranformação  */
+        }
+        .cena:hover .card{
+            transform: translateX(-300px) rotateY(-180deg);
+            /* aplicamdo tralslate e rotate  */
+        }
+        .card_face{
+             position: absolute; 
+            /* para que os dois elementos ocupem o mesmo espaço e sobreescravam  */
+            /* alterando o position  */
+            width: 100%;
+            /* forçando o elemento a ocupar 100 da largura disponivel do elemento pai  */
+            height: 100%;
+            /* forçando o elemento a ocupar 100 da altura disponivel do elemento pai  */
+            display: flex;
+            /* alterando display  */
+            align-items: center;
+            /* centralizando na vertical  */
+            justify-content: center;
+            /* centralizando na horizontal  */
+            backface-visibility: hidden; 
+            /* ocultando a parte de trás do elemento  */
+        }
+        .card_face_front{
+            background-color: red;
+            /* cor de fundo  */
+        }
+        .card_face_back{
+            background-color: blue;
+            /* cor de fundo  */
+            transform: rotateY(180deg); 
+            /* girando o elemento para que ele se esconda atrás do outro  */
+         
+        }
+    </style>
+</head>
+<body>
+    <div class="cena">
+        <div class="card">
+            <div class="card_face card_face_front">Front</div>
+            <div class="card_face card_face_back">Back</div>
+        </div>
+    </div>
+</body>
+</html>
